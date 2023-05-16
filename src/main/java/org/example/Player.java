@@ -4,15 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    String name;
-    int score = 0;
-    List<Card> cardsInHand = new ArrayList<>();
+    private final String name;
+    private int score;
+    private List<String> hand;
 
-    public void addCard(Card card){
-        cardsInHand.add(card);
-        score += card.getCardValue();
+    public Player(String name) {
+        this.name = name;
+        hand = new ArrayList<>();
+        score = 0;
     }
-    public static void printResult(String name, List<String> cardsInHand) {
-        System.out.println(name + String.join(", ", cardsInHand));
+
+    public void addCard(String card) {
+        hand.add(card);
+        score += Card.getCardValue(card);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<String> getHand() {
+        return hand;
+    }
+
+    public int getScore() {
+        return score;
     }
 }
